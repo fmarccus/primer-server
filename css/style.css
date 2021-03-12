@@ -1,0 +1,87 @@
+#employees, #orders, #inventory, #analytics, #pos, #sales, #tasks, #feedbacks, #published {
+    font-size: 14px;
+}
+
+.text-primary {
+    color: #25476D !important;
+}
+table.table-hover tbody tr:hover {
+    background-color: #cfe9ff; 
+}
+#hide_show {
+    font-size: 14px;
+}
+.form-control {
+    font-size: 14px;
+    
+} .form-control:focus {
+    border-color: #245379;
+} .form-select:focus {
+    border-color: #000000;
+}
+
+#brand {
+    
+    color:    #25476D;
+    font-size: 35px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bolder;
+    
+}
+
+#icon_logo {
+  color: #25476D;
+}
+.title {
+    
+    height: 100px;
+}
+.background-feedback {
+    background-image: url('/images/bg-feedback.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100%;
+}
+
+.divider {
+    font-weight: bold;
+}
+a {
+    text-decoration: none !important
+}
+/* dark blue theme natin para match*/
+.btn-create {
+    background-color: #25476D;
+    color: #ffffff;
+} .btn-create:hover {
+    background-color: #1b3b5f;
+    color: rgb(196, 203, 218);
+}
+.btn-success {
+    background-color: rgb(48, 131, 6);
+    color: rgb(255, 255, 255);
+}
+.btn-success:hover {
+    background-color: rgb(10, 161, 78);
+    color: rgb(218, 211, 211);
+}
+/* for SELECT buttons in tables*/
+.btn-light {
+    background-color: #e6ecf5;
+    color: black;
+} .btn-light:hover {
+    background-color: #e6ecf5;
+    color: rgb(67, 66, 66);
+}
+
+/*EMPLOYEES for individual TD colors*/
+.lastname {
+    background-color:test;
+    color:fff;
+}
+
+
+
+

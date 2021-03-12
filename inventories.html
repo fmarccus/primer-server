@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/logo/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/logo/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/logo/favicon-16x16.png">
+    <link rel="manifest" href="/logo/site.webmanifest">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
+        integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"
+        integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.17/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.17/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.17/dist/js/uikit-icons.min.js"></script>
+
+</head>
+
+<body id="orders">
+    <!--Top bar-->
+    <section>
+        <ul class="nav justify-content-end fixed-top" style="background-color: #25476D;">
+            <li class="nav-item me-auto">
+                <button class="uk-button uk-button-light" style="background-color: #25476D;" type="button"
+                    uk-toggle="target: #offcanvas-nav"><i class="fas fa-bars"
+                        style="color:#ffffff; max-width: 15px;"></i></button>
+            </li>
+        </ul>
+    </section>
+    <!--top bar-->
+
+    <!--Side Bar-->
+    <section class="mt-5">
+        <div id="offcanvas-nav" uk-offcanvas="mode: push; overlay:true">
+            <div class="uk-offcanvas-bar" style="background-color: #25476D;">
+                <ul class="uk-nav uk-nav-default">
+                    <br><br>
+                    <li class="uk-nav-header" style="font-size: 22px;"> <i class="fab fa-pinterest me-2" id=""></i>
+                        Primer Bookstore</li>
+                    <br>
+                    <li><a href="index.html" class="uk-margin-small-right" style="font-size: 14px; color: white;"><i
+                                class="fas fa-home me-3"></i>Home</a></li>
+                    <li class="uk-nav-divider"></li>
+                    <li><a href="employees.html" class="uk-margin-small-right" style="font-size: 14px; color: white;"><i
+                                class="fas fa-users me-3 text-light"></i>Manage
+                            Employees</a></li>
+                    <li class="uk-nav-divider"></li>
+                    <li><a href="orders.html" class="uk-margin-small-right" style="font-size: 14px; color: white;"><i
+                                class="fas fa-shopping-cart me-3 text-light"></i>Pending
+                            Orders</a></li>
+                    <li class="uk-nav-divider"></li>
+                    <li><a href="inventories.html" class="uk-margin-small-right"
+                            style="font-size: 14px; color: white;"><i
+                                class="fas fa-boxes me-3 text-light"></i>Inventory</a></li>
+                    <li class="uk-nav-divider"></li>
+                    <li><a href="analytics.html" class="uk-margin-small-right" style="font-size: 14px; color: white;"><i
+                                class="fas fa-chart-bar me-3 text-light"></i>Sales Analysis Report</a></li>
+                    <li class="uk-nav-divider"></li>
+                    <li><a href="pos.html" class="uk-margin-small-right" style="font-size: 14px; color: white;"><i
+                                class="fas fa-dollar-sign me-4 text-light"></i>Point of Sales</a></li>
+                    <li class="uk-nav-divider"></li>
+                    <li><a href="sales.html" class="uk-margin-small-right" style="font-size: 14px; color: white;"><i
+                                class="fas fa-history me-3 text-light"></i>Sales History</a></li>
+                    <li class="uk-nav-divider"></li>
+                    <li><a href="tasks.html" class="uk-margin-small-right" style="font-size: 14px; color: white;"><i
+                                class="fas fa-tasks me-3 text-light"></i>Tasks/Meetings</a></li>
+                    <li class="uk-nav-divider"></li>
+                    <li class="uk-parent"> Feedbacks
+                        <ul class="uk-nav-sub">
+                            <li><a href="feedbacks.html" class="uk-margin-small-right"
+                                    style="font-size: 14px; color: white;"><i
+                                        class="fas fa-comments me-3 text-light"></i>Customer Feedbacks</a></li>
+                            <li><a href="published.html" class="uk-margin-small-right"
+                                    style="font-size: 14px; color: white;"><i
+                                        class="fas fa-comment-dots me-3"></i>Published
+                                    Feedbacks</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--End of Side Bar-->
+
+    <section class="mt-3">
+        <div class="container">
+            <br>
+            <a href="index.html" id="brand" style="text-decoration: none;"><i class="fas fa-boxes me-2 ml-5"
+                    id="icon_logos"></i>INVENTORY</a>
+        </div>
+    </section>
+    <!-- End of Title bar -->
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <section class="mt-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <!--Edit Inventory-->
+                                    <form id="formdata" method="post">
+                                        <row>
+                                            <div class="col-md-12">
+                                                <h5 class="divider">Book Details</h5>
+                                            </div>
+                                            <div class="col-md-12 mb-2">
+                                                <div class="row">
+                                                    <label for="title" class="col-sm-4 col-form-label">Book
+                                                        Title</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control shadow-none" id="title"
+                                                            required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 mb-2">
+                                                <div class="row">
+                                                    <label for="author" class="col-sm-4 col-form-label">Author</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control shadow-none" id="author"
+                                                            required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 mb-2">
+                                                <div class="row">
+                                                    <label for="isbn" class="col-sm-4 col-form-label">ISBN</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="number" class="form-control shadow-none" id="isbn"
+                                                            required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 mb-2">
+                                                <div class="row">
+                                                    <label for="genre" class="col-sm-4 col-form-label">Genre</label>
+                                                    <div class="col-sm-8">
+                                                        <input class="form-control shadow-none" list="datalistOptions"
+                                                            id="genre" placeholder="Search...">
+                                                        <datalist id="datalistOptions">
+                                                            <option value="Adventure">Adventure
+                                                            <option value="Fantasy">Fantasy
+                                                            <option value="Historical Fiction">Historical Fiction
+                                                            <option value="Literary Fiction">Literary Fiction
+                                                            <option value="Motivational/Inspirational">
+                                                                Motivational/Inspirational
+                                                            <option value="Romance">Romance
+                                                            <option value="Science Fiction">Science Fiction
+                                                            <option value="Others">Others
+                                                        </datalist>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 mb-2">
+                                                <div class="row">
+                                                    <label for="publication_date"
+                                                        class="col-sm-4 col-form-label">Publication Date</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="date" class="form-control shadow-none"
+                                                            id="publication_date" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 mb-3">
+                                                <div class="row">
+                                                    <label for="book_size" class="col-sm-4 col-form-label">Book Size
+                                                    </label>
+                                                    <div class="col-sm-8">
+                                                        <select class="form-select shadow-none" id="book_size">
+                                                            <option value=""></option>
+                                                            <option value="Quarto">Quarto</option>
+                                                            <option value="Octavo">Octavo</option>
+                                                            <option value="Duodecimo">Duodecimo</option>
+                                                            <option value="Sextodecimo">Sextodecimo</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <h5 class="divider">Contact Person</h5>
+                                            </div>
+                                            <div class="col-md-12 mb-2">
+                                                <div class="row">
+                                                    <label for="supplier"
+                                                        class="col-sm-4 col-form-label">Supplier</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control shadow-none"
+                                                            id="supplier" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 mb-2">
+                                                <div class="row">
+                                                    <label for="contact" class="col-sm-4 col-form-label">Contact</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control shadow-none" id="contact"
+                                                            required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 mb-2">
+                                                <div class="row">
+                                                    <label for="delivery_address"
+                                                        class="col-sm-4 col-form-label">Delivery
+                                                        Address</label>
+                                                    <div class="col-sm-8">
+                                                        <select class="form-select shadow-none" id="delivery_address">
+                                                            <option value=""></option>
+                                                            <option value="Warehouse 1">Warehouse 1</option>
+                                                            <option value="Warehouse 2">Warehouse 2</option>
+                                                            <option value="Branch 1">Branch 1</option>
+                                                            <option value="Branch 2">Branch 2</option>
+                                                            <option value="Branch 3">Branch 3</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 text-end">
+                                                <input type="hidden" name="document" id="document">
+                                                <button type="button" class="btn btn-sm btn-light" id="update">Save
+                                                    Changes</button>
+                                            </div>
+                                        </row>
+                                    </form>
+                                    <!--End of Edit Inventory-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-md-8">
+                <section class="mt-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6 me-auto">
+                                            <div id="grpChkBox" class="my-2">
+                                                <!-- Example single danger button -->
+                                                <div class="btn-group dropend" id="display_table">
+                                                    <button type="button" class="btn btn-light btn-sm dropdown-toggle"
+                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                        Show/hide columns
+                                                    </button>
+                                                    <ul class="dropdown-menu" id="hide_show">
+                                                        <li><a class="dropdown-item"><input class="form-check-input"
+                                                                    name="_events" type="checkbox"> Events</a>
+                                                        </li>
+                                                        <li><a class="dropdown-item"><input class="form-check-input"
+                                                                    name="_title" type="checkbox"> Title</a>
+                                                        </li>
+                                                        <li><a class="dropdown-item"><input class="form-check-input"
+                                                                    name="_author" type="checkbox"> Author</a>
+                                                        </li>
+                                                        <li><a class="dropdown-item"><input class="form-check-input"
+                                                                    name="_isbn" type="checkbox"> ISBN</a>
+                                                        </li>
+                                                        <li><a class="dropdown-item"><input class="form-check-input"
+                                                                    name="_genre" type="checkbox"> Genre</a></li>
+
+                                                        <li><a class="dropdown-item"><input class="form-check-input"
+                                                                    name="_publication" type="checkbox"> Publication
+                                                                Date</a></li>
+                                                        <li><a class="dropdown-item"><input class="form-check-input"
+                                                                    name="_booksize" type="checkbox"> Book Size</a>
+                                                        </li>
+                                                        <li><a class="dropdown-item"><input class="form-check-input"
+                                                                    name="_delivery" type="checkbox"> Delivery
+                                                                Address</a>
+                                                        </li>
+                                                        <li><a class="dropdown-item"><input class="form-check-input"
+                                                                    name="_supplier" type="checkbox"> Supplier</a>
+                                                        </li>
+                                                        <li><a class="dropdown-item"><input class="form-check-input"
+                                                                    name="_contact" type="checkbox"> Contact</a>
+                                                        </li>
+                                                        <li><a class="dropdown-item"><input class="form-check-input"
+                                                                    name="_date" type="checkbox"> Date of Arrival</a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="dropdown-item"><input class="form-check-input"
+                                                                    id="_all" type="checkbox"> All</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 ms-auto mb-3"> <input type="search"
+                                                class="form-control shadow-none" name="myInput" id="myInput"
+                                                placeholder="Search...">
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table id="myTable"
+                                            class="table table-bordered table-hover table-sm text-center text-truncate">
+                                            <thead class="thead-inverse"
+                                                style="background-color: #25476D; color: #ffffff;">
+                                                <tr>
+                                                    <td class="_events">Events</td>
+                                                    <td class="_title">Title</td>
+                                                    <td class="_author">Author</td>
+                                                    <td class="_isbn">ISBN</td>
+                                                    <td class="_genre">Genre</td>
+                                                    <td class="_publication">Publication Date</td>
+                                                    <td class="_booksize">Book Size</td>
+                                                    <td class="_delivery">Delivery Address</td>
+                                                    <td class="_supplier">Supplier</td>
+                                                    <td class="_contact">Contact</td>
+                                                    <td class="_date">Date of Arrival</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="datatable">
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <p class="back-top" style="font-size: 30px; text-align: right; position: relative; color: #25476D;"><a
+                    href="#">
+                    <i class="fas fa-arrow-circle-up mr-3" style="color: #25476D;"></i></a></p>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/javascripts/connection.js"></script>
+    <script src="/javascripts/search.js"></script>
+    <script src="/javascripts/inventories.js"></script>
+</body>
+
+</html>
